@@ -67,6 +67,17 @@ public:
   ///* Sigma point spreading parameter
   double lambda_;
 
+  ///* NIS for laser
+  double nis_laser_;
+
+  ///* NIS for radar
+  double nis_radar_;
+
+  ///* Noise matrix laser
+  MatrixXd R_laser_;
+
+  ///* Noise matrix radar
+  MatrixXd R_radar_;
 
   /**
    * Constructor
@@ -102,6 +113,20 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+  /**
+   * Normalizes the angle to the range of -pi to pi
+   * @param {double} *angle pointer to the angle that should be normalized
+   */ 
+  void NormalizeAngle(double *angle);
+
+  /**
+   * Common part of the lidar and radar update function
+   * @param {MeasurementPackage} meas_package The measurement at k+1
+   * @param {MatrixXd} Zsig Sigma points in measurement space
+   * @param {int} n_z Dimension of the measurement space
+   */
+  void UpdateCommon(MeasurementPackage meas_package, MatrixXd Zsig, int n_z);
 };
 
 #endif /* UKF_H */

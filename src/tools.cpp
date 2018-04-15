@@ -33,7 +33,8 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   {
     // Calculate error and add square to the sum
     VectorXd residual = estimations[i] - ground_truth[i];
-    rmse += residual.array() * residual.array();
+    residual = residual.array() * residual.array();
+    rmse += residual;
   }
 
   // Average and root of the squared errors
