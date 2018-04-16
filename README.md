@@ -1,6 +1,19 @@
 # Unscented Kalman Filter Project Starter Code
 Self-Driving Car Engineer Nanodegree Program
 
+[image1]: ./process_nis/NIS_Laser.png "NIS for Lidar"
+[image2]: ./process_nis/NIS_Radar.png "NIS for Radar"
+
+## Normalized Innovation Squared (NIS)
+
+NIS was used to measure the accuracy and consitenxy of the UKF. For three degrees of freedom (dof) approximately 5% of the values should be above the value of 7.82. This is the case for radar. For lidar with only 2 degrees of freedom the value is at 5.99. The following images show the result for the NIS values of the implemented UKF:
+
+![alt text][image1]
+
+![alt text][image2]
+
+---
+
 In this project utilize an Unscented Kalman Filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. Passing the project requires obtaining RMSE values that are lower that the tolerance outlined in the project rubric. 
 
 This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases)
